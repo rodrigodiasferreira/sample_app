@@ -5,6 +5,7 @@ SampleApp::Application.routes.draw do
   #Named routes to user model
   match '/signup',  to: 'users#new',            via: 'get'
   #Named routes to session controller
+  match '/sessions', to: 'sessions#create',     via: 'post'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   #Routes to static_pages

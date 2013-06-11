@@ -18,13 +18,34 @@ describe "Authentication" do
       it { should have_content('Sign in') }
       it { should have_title('Sign in') }
 
-    describe "with invalid information" do
+    describe "with invalid empty information" do
 
       before { click_button "Sign in" }
 
       it { should have_title('Sign in') }
       it { should have_selector('div.alert.alert-error', text: 'Invalid') }
       #should have_error_message('Invalid')
+      
+      describe "after visiting another page" do
+        before { click_link "Home" }
+        it { should_not have_selector('div.alert.alert-error') }
+      end
+
+    end
+    
+    describe "with invalid filled information" do
+
+      let(:user) { FactoryGirl.create(:user) }
+      before do
+        fill_in "Email",    with: user.email.upcase
+        fill_in "Password", with: ""
+        click_button "Sign in"
+      end
+
+      it { should have_title('Sign in') }
+      it { should have_selector('div.alert.alert-error', text: 'Invalid') }
+      it { expect(page).to have_field(:email, with: user.email.upcase) }
+      #it { find_field('email').value.should eq user.email.upcase }
       
       describe "after visiting another page" do
         before { click_link "Home" }

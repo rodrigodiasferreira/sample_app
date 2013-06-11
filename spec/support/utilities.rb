@@ -11,3 +11,25 @@ RSpec::Matchers.define :have_error_message do |message|
     expect(page).to have_selector('div.alert.alert-error', text: message)
   end
 end
+
+def visits_signin_page()
+  visit signin_path
+end
+
+def submits_invalid_blank_signin()
+  click_button "Sign in"
+end
+
+RSpec::Matchers.define :should_see_profile_page do |user|
+  match do |page|
+    expect(page).to have_title(user.name)
+    expect(page).to have_link('Profile',     href: user_path(user))
+    expect(page).to have_link('Sign out',    href: signout_path)
+    expect(page).to have_link('Sign in',     href: signin_path)
+  end
+end
+
+
+def user_has_account()
+  @user = FactoryGirl.create(:user)
+end

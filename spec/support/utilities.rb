@@ -8,6 +8,11 @@ def valid_signin(user)
   #cookies[:remember_token] = user.remember_token
 end
 
+def sign_in(user)
+  visits_signin_page
+  valid_signin(user)
+end
+
 RSpec::Matchers.define :have_error_message do |message|
   match do |page|
     expect(page).to have_selector('div.alert.alert-error', text: message)

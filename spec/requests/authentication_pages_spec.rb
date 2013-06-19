@@ -2,24 +2,6 @@ require 'spec_helper'
 
 describe "Authentication" do
 
-  describe "index" do
-    before do
-      sign_in FactoryGirl.create(:user)
-      FactoryGirl.create(:user, name: "Bob", email: "bob@example.com")
-      FactoryGirl.create(:user, name: "Ben", email: "ben@example.com")
-      visit users_path
-    end
-
-    it { should have_title('All users') }
-    it { should have_content('All users') }
-
-    it "should list each user" do
-      User.all.each do |user|
-        expect(page).to have_selector('li', text: user.name)
-      end
-    end
-  end
-
   describe "GET /authentication_pages" do
     it "works! (now write some real specs)" do
       # Run the generator again with the --webrat flag if you want to use webrat methods/matchers

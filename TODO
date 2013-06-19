@@ -2,3 +2,4 @@ read about ActiveRecord::Base
 study validates
 Rubular
 verify rails c --sandbox --> is not working, committing changes
+Verify - Delete without enabling Java Script - http://railscasts.com/episodes/77-destroy-without-javascript

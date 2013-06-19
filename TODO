@@ -1,3 +1,4 @@
 read about ActiveRecord::Base
 study validates
 Rubular
+verify rails c --sandbox --> is not working, committing changes

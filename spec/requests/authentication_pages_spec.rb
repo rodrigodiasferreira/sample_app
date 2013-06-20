@@ -18,6 +18,11 @@ describe "Authentication" do
       it { should have_content('Sign in') }
       it { should have_title('Sign in') }
 
+    describe "Unsigned user" do
+      it { should_not have_link('Profile') }
+      it { should_not have_link('Settings') }
+    end
+    
     describe "with invalid blank information" do
 
       before { submits_invalid_blank_signin }

@@ -23,6 +23,6 @@
 
     <% options = {size: 80} %>
     <%= gravatar_for @user, options %>
-    <a href="http://gravatar.com/emails">change</a>
+    <%= link_to "Change", "http://gravatar.com/emails", target: "_blank" %>
   </div>
 </div>

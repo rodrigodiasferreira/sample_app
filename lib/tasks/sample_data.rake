@@ -15,7 +15,7 @@ namespace :db do
                    password: password,
                    password_confirmation: password)
     end
-
+    #User.all is deprecated
     users = User.all(limit: 6)
     50.times do
       content = Faker::Lorem.sentence(5)

@@ -85,6 +85,8 @@ class UsersController < ApplicationController
       redirect_to(root_path) if signed_in?
     end
 
+    #TODO: test with curl delete of the users and print on log that was not
+    #      possible due to be himself or even through enabling it on the view
     def not_let_admin_delete_themselves
       @user = User.find(params[:id])
       redirect_to(users_path) if current_user?(@user)

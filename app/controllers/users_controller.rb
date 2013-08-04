@@ -66,6 +66,8 @@ class UsersController < ApplicationController
 
   private
 
+    #TODO: Test sending admin = 1,
+    #      through view or curl, printing on log
     def user_params
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)

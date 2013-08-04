@@ -24,6 +24,8 @@ class MicropostsController < ApplicationController
       params.require(:micropost).permit(:content)
     end
 
+    #TODO: 2 - Test this feature of deleting the other user's micropost/feed
+    #      through view or curl, printing on log
     def correct_user
       @micropost = current_user.microposts.find(params[:id])
     rescue
